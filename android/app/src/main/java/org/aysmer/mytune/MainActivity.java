@@ -84,11 +84,17 @@ public final class MainActivity extends Activity {
     }
 
     private void openVideoApp(Uri uri) {
-        Intent view = new Intent(Intent.ACTION_VIEW, uri);
+        Intent youtube = new Intent(Intent.ACTION_VIEW, uri);
+        youtube.setPackage("com.google.android.youtube");
         try {
-            startActivity(Intent.createChooser(view, "Open video with"));
+            startActivity(youtube);
         } catch (ActivityNotFoundException ex) {
-            Toast.makeText(this, "No app can open this video. Install NewPipe or YouTube.", Toast.LENGTH_LONG).show();
+            Intent otherPlayer = new Intent(Intent.ACTION_VIEW, uri);
+            try {
+                startActivity(Intent.createChooser(otherPlayer, "Open video with"));
+            } catch (ActivityNotFoundException noPlayer) {
+                Toast.makeText(this, "No app can open this video. Install YouTube or another compatible player.", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
