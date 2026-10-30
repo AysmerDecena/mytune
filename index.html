@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101010"><meta name="description" content="A personal YouTube video finder and favorites app.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"><title>MyTune</title>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#top" aria-label="MyTune home"><span class="brand-icon">▶</span><span>my<span class="accent">tune</span></span></a><button id="settingsBtn" class="icon-button" aria-label="Settings" title="Settings">⚙</button></header>
+  <main id="top">
+    <section class="hero"><p class="eyebrow">YOUR YOUTUBE DISCOVERY SPACE</p><h1>Find something<br><span class="accent">worth listening to.</span></h1><p class="subhead">Search videos, save favorites, and play them with YouTube.</p>
+      <form id="searchForm" class="search"><label class="sr-only" for="query">Search YouTube</label><input id="query" type="search" placeholder="Search songs, artists, mixes…" autocomplete="off" required><button type="submit" aria-label="Search">Search</button></form>
+      <p id="notice" class="notice" role="status">Add your YouTube Data API key in Settings to search.</p>
+    </section>
+    <section id="playerSection" class="player-section" hidden><div class="section-heading"><div><p class="eyebrow">NOW PLAYING</p><h2 id="playingTitle">Choose a video</h2></div><button id="openYoutube" class="quiet-button" type="button">Open in YouTube ↗</button></div><div class="player-frame"><div id="player"></div></div><p class="player-note">Keep this player visible while playing. Background playback is handled by the official YouTube app and depends on your membership and video.</p></section>
+    <section class="results-section"><div class="section-heading"><div><p class="eyebrow">DISCOVER</p><h2 id="resultsHeading">Search YouTube</h2></div></div><div id="results" class="cards"><div class="empty"><span>♪</span><p>Your search results will show up here.</p></div></div></section>
+    <section class="favorites-section"><div class="section-heading"><div><p class="eyebrow">SAVED ON THIS PHONE</p><h2>Favorites</h2></div><button id="clearFavorites" class="quiet-button" type="button" hidden>Clear</button></div><div id="favorites" class="cards"><div class="empty compact"><p>Save videos with ♡ to build your list.</p></div></div></section>
+  </main>
+  <footer>MyTune is an independent app. YouTube videos play through the official embedded player.</footer>
+  <dialog id="settingsDialog"><form method="dialog" id="settingsForm"><div class="dialog-top"><div><p class="eyebrow">PERSONAL SETUP</p><h2>Settings</h2></div><button class="icon-button" value="cancel" aria-label="Close">×</button></div><label class="field-label" for="apiKey">YouTube Data API key</label><input id="apiKey" type="password" placeholder="Paste your API key" autocomplete="off"><p class="help">The key stays in this browser on this phone. Create a key in Google Cloud Console with YouTube Data API v3 enabled. Restrict it to your app’s website origin when you publish.</p><div class="settings-actions"><button type="button" class="quiet-button" id="removeKey">Remove key</button><button class="primary-button" value="save">Save settings</button></div></form></dialog>
+  <script src="app.js" defer></script>
+</body>
+</html>
